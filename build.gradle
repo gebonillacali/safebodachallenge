@@ -9,6 +9,7 @@ buildscript {
     ext.dagger_version = '2.16'
     ext.retrofit_version = '2.3.0'
     ext.rx_android_version = '2.0.2'
+    ext.room_version = '1.1.1'
     ext.arch_lifecycle = '1.1.1'
     ext.google_playservices_version = '16.0.0'
     ext.lottie_version = '2.5.1'
