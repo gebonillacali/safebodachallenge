@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">SafeBodaChallenge</string>
+    <string name="splash_intro_text">Gustavo\'s Android Challenge</string>
+    <string name="splash_explaining_text">Loading initial content, please wait…</string>
+    <string name="splash_city_retrieve_error">An error occurred, please check your internet connection, close the application and try again</string>
 </resources>
