@@ -47,7 +47,7 @@ abstract class UseCase<T, Parameters>(
      * @param parameters the parameters of type Parameters to retrieve the type T.
      * @param observer the observer that will be getting the response as type T.
      */
-    fun execute(parameters: Parameters, observer: ((T) -> Unit)) {
+    fun execute(parameters: Parameters, observer: ((T) -> Unit), errorObserver: ((Throwable) -> Unit)? = null) {
         checkAuthToken { gotNewAuthToken, disposable ->
             if (gotNewAuthToken && disposable.isNotNull()) {
                 compositeDisposable.add(disposable!!)
@@ -55,9 +55,24 @@ abstract class UseCase<T, Parameters>(
             compositeDisposable.add(createUseCase(parameters)
                     .subscribeOn(subscribeOn)
                     .observeOn(observeOn)
+                    .doOnError { throwable ->
+                        errorObserver?.let {
+                            it(throwable)
+                        }
+                    }
                     .subscribe {
                         observer(it)
                     })
         }
+    }
+
+    fun dispose() {
+        if (!compositeDisposable.isDisposed) {
+            compositeDisposable.dispose()
+        }
+    }
+
+    fun clear() {
+        compositeDisposable.clear()
     }
 }

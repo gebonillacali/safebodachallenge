@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.splash.view.SplashActivity">
+
+    <ImageView
+        android:id="@+id/safeBodaLogo"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:src="@drawable/safebodalogo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/challengeText"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"/>
+
+    <TextView
+        android:id="@+id/challengeText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/safeBodaLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        android:text="@string/splash_intro_text"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loadingAnimation"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        app:layout_constraintTop_toBottomOf="@id/challengeText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/loadingText"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_fileName="loading.json"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"/>
+
+    <TextView
+        android:id="@+id/loadingText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/loadingAnimation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/percentageText"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:text="@string/splash_explaining_text"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"/>
+
+    <TextView
+        android:id="@+id/percentageText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/loadingText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        tools:text="10%"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="24dp"
+        />
+</android.support.constraint.ConstraintLayout>

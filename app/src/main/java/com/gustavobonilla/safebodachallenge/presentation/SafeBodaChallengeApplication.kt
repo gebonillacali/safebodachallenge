@@ -23,6 +23,4 @@ class SafeBodaChallengeApplication: Application() {
                 .build()
     }
     //endregion
-
-
 }
