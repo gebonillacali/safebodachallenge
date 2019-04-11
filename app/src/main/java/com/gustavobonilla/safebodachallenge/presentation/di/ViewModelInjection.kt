@@ -1,6 +1,8 @@
 package com.gustavobonilla.safebodachallenge.presentation.di
 
 import android.arch.lifecycle.ViewModel
+import com.gustavobonilla.safebodachallenge.domain.model.City
+import com.gustavobonilla.safebodachallenge.presentation.viewmodel.SearchCitiesViewModel
 import com.gustavobonilla.safebodachallenge.presentation.viewmodel.StoreCitiesViewModel
 import com.gustavobonilla.safebodachallenge.usecases.UseCase
 import dagger.Module
@@ -14,5 +16,11 @@ class ViewModelModule {
     @Singleton
     fun providesStoreCitiesViewModel(useCase: UseCase<Int, Int>): ViewModel {
         return StoreCitiesViewModel(useCase)
+    }
+
+    @Provides
+    @Singleton
+    fun providesSearchCitiesViewModel(useCase: UseCase<List<City>, String>): ViewModel {
+        return SearchCitiesViewModel(useCase)
     }
 }

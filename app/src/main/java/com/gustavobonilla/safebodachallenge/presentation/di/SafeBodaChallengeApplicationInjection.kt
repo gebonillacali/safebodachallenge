@@ -2,8 +2,10 @@ package com.gustavobonilla.safebodachallenge.presentation.di
 
 import android.content.Context
 import com.gustavobonilla.safebodachallenge.presentation.SafeBodaChallengeApplication
-import com.gustavobonilla.safebodachallenge.presentation.splash.di.SplashComponent
-import com.gustavobonilla.safebodachallenge.presentation.splash.di.SplashModule
+import com.gustavobonilla.safebodachallenge.presentation.sections.home.di.HomeComponent
+import com.gustavobonilla.safebodachallenge.presentation.sections.home.di.HomeModule
+import com.gustavobonilla.safebodachallenge.presentation.sections.splash.di.SplashComponent
+import com.gustavobonilla.safebodachallenge.presentation.sections.splash.di.SplashModule
 import dagger.Component
 import dagger.Module
 import dagger.Provides
@@ -13,7 +15,8 @@ import javax.inject.Singleton
 @Component(modules = [SafeBodaChallengeApplicationModule::class, RepositoryModule::class, UseCaseModule::class, ViewModelFactoryModule::class,
     ViewModelModule::class])
 interface SafeBodaChallengeApplicationComponent {
-    fun plus(splashModule: SplashModule):SplashComponent
+    fun plus(splashModule: SplashModule): SplashComponent
+    fun plus(homeModule: HomeModule): HomeComponent
 }
 
 @Module

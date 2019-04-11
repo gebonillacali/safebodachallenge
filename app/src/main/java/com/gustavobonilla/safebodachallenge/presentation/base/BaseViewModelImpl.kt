@@ -17,6 +17,7 @@ abstract class BaseViewModelImpl<T, Parameters>(private val useCase: UseCase<T, 
 
     protected val publisher: PublishSubject<T> = PublishSubject.create()
     protected val publisherError: PublishSubject<Throwable> = PublishSubject.create()
+    private val memoryValues = mutableMapOf<String, Any>()
 
     //region [BaseViewModel] Impl
     override fun subscribe(observer: (listCategory: T) -> Unit, errorObserver: ((Throwable) -> Unit)?) {
@@ -29,6 +30,14 @@ abstract class BaseViewModelImpl<T, Parameters>(private val useCase: UseCase<T, 
     override fun unSubscribe() {
         useCase.clear()
         disposables.clear()
+    }
+
+    override fun saveInMemoryValues(key: String, value: Any) {
+        memoryValues[key] = value
+    }
+
+    override fun retreiveInMemoryValues(key: String): Any? {
+        return if (memoryValues.contains(key)) memoryValues[key] else null
     }
     //endregion
 }

@@ -2,8 +2,7 @@ package com.gustavobonilla.safebodachallenge.presentation.di
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.gustavobonilla.safebodachallenge.presentation.viewmodel.SafeBodaViewModelFactory
-import com.gustavobonilla.safebodachallenge.presentation.viewmodel.StoreCitiesViewModel
+import com.gustavobonilla.safebodachallenge.presentation.viewmodel.*
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -23,5 +22,10 @@ abstract class ViewModelFactoryModule {
     @Binds
     @IntoMap
     @ViewModelKey(StoreCitiesViewModel::class)
-    internal abstract fun citySelectionViewModel(viewModel: StoreCitiesViewModel): ViewModel
+    internal abstract fun storeCitiesViewModel(viewModel: StoreCitiesViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchCitiesViewModel::class)
+    internal abstract fun searchCitiesViewModel(viewModel: SearchCitiesViewModel): ViewModel
 }

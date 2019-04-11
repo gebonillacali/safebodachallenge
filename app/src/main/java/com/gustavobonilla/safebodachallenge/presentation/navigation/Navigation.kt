@@ -38,4 +38,15 @@ object Navigation {
         transaction.add(idResContainer, fragment)
         transaction.commit()
     }
+
+    /**
+     * Replace a [Fragment] in the backstack in the [FragmentManager]
+     *
+     * @param fragment the fragment to be added.
+     */
+    fun replaceFragment(supportFragmentManager: FragmentManager, @IdRes idResContainer: Int, fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(idResContainer, fragment).addToBackStack(Fragment::class.java.simpleName)
+        transaction.commit()
+    }
 }

@@ -1,48 +1,34 @@
-package com.gustavobonilla.safebodachallenge.presentation.splash.view
+package com.gustavobonilla.safebodachallenge.presentation.sections.splash.view
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.gustavobonilla.safebodachallenge.R
 import com.gustavobonilla.safebodachallenge.presentation.SafeBodaChallengeApplication
-import com.gustavobonilla.safebodachallenge.presentation.base.BaseView
-import com.gustavobonilla.safebodachallenge.presentation.base.BaseViewModel
-import com.gustavobonilla.safebodachallenge.presentation.home.HomeActivity
+import com.gustavobonilla.safebodachallenge.presentation.base.BaseActivity
+import com.gustavobonilla.safebodachallenge.presentation.sections.home.view.HomeActivity
 import com.gustavobonilla.safebodachallenge.presentation.navigation.Navigation
-import com.gustavobonilla.safebodachallenge.presentation.splash.di.SplashModule
+import com.gustavobonilla.safebodachallenge.presentation.sections.splash.di.SplashModule
 import com.gustavobonilla.safebodachallenge.presentation.util.AppPreferencesImpl
 import kotlinx.android.synthetic.main.activity_splash.*
-import javax.inject.Inject
 
-class SplashActivity : AppCompatActivity(), BaseView<Int> {
-
-    @Inject
-    lateinit var storeCitiesViewModel: BaseViewModel<Int, Int>
+class SplashActivity : BaseActivity<Int, Int>() {
 
     private lateinit var appPreferencesImpl: AppPreferencesImpl
 
     //region Activity Lifecycle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutResource())
         appPreferencesImpl = AppPreferencesImpl(this.getSharedPreferences(AppPreferencesImpl.FILENAME_APP_PREFERENCES, 0))
 
     }
 
     override fun onStart() {
         super.onStart()
-        inject()
         if (!appPreferencesImpl.getPreferences().getBoolean(AppPreferencesImpl.Keys.CITY_FIRST_LOAD.value, false)) {
-            storeCitiesViewModel.subscribe(subscribeListener(), subscribeErrorListener())
-            storeCitiesViewModel.getData(0)
+            viewModel.getData(0)
         } else {
             navigateToHome()
         }
-    }
-
-    override fun onDestroy() {
-        storeCitiesViewModel.unSubscribe()
-        super.onDestroy()
     }
     //endregion
 
