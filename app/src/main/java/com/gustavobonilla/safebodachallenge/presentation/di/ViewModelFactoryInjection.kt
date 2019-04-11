@@ -33,4 +33,9 @@ abstract class ViewModelFactoryModule {
     @IntoMap
     @ViewModelKey(FlightScheduleViewModel::class)
     internal abstract fun flightScheduleViewModel(viewModel: FlightScheduleViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CityViewModel::class)
+    internal abstract fun cityViewModel(viewModel: CityViewModel): ViewModel
 }

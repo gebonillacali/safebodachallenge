@@ -10,4 +10,5 @@
     <string name="select_airport_error">Could not find a city with this name.</string>
     <string name="search_airport">Search Airport</string>
     <string name="hint_select_airport">Enter a city name</string>
+    <string name="flight_detail_title">Flight Detail</string>
 </resources>

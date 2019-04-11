@@ -1,6 +1,10 @@
 package com.gustavobonilla.safebodachallenge.data.entity
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Defines the model for FlightSchedule Data Entities.
+ */
+
 data class FlightScheduleEntity(
     @SerializedName("ScheduleResource")
     val scheduleResource: ScheduleResource
@@ -67,7 +71,7 @@ data class Compartment(
 
 data class Terminal(
     @SerializedName("Name")
-    val name: Int
+    val name: String
 )
 
 data class ScheduledTimeLocal(
