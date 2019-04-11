@@ -9,6 +9,6 @@ import io.reactivex.Observable
  */
 class GetCityByAirportCode(override val repository: SafeBodaRepository): UseCase<City, String>() {
     override fun createUseCase(parameters: String): Observable<City> {
-        return repository.getCityByAirportCode(parameters)
+        return repository.getCityByAirportCode("%$parameters%")
     }
 }

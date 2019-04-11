@@ -25,6 +25,6 @@ abstract class CitiesDao: BaseDao<CityDaoEntity> {
     companion object {
         const val GET_ALL_QUERY = "select * from cities limit ((:offset - 1) * $PAGING), $PAGING"
         const val GET_SEARCH_QUERY = "select * from cities where lower(cityName) like lower(:cityName)"
-        const val GET_AIRPORT_CODE_QUERY = "select * from cities where airportCode = :airportCode"
+        const val GET_AIRPORT_CODE_QUERY = "select * from cities where airportCode like :airportCode"
     }
 }

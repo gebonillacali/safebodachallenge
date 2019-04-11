@@ -2,6 +2,8 @@ package com.gustavobonilla.safebodachallenge.presentation.di
 
 import android.content.Context
 import com.gustavobonilla.safebodachallenge.presentation.SafeBodaChallengeApplication
+import com.gustavobonilla.safebodachallenge.presentation.sections.flightdetail.di.FlightDetailComponent
+import com.gustavobonilla.safebodachallenge.presentation.sections.flightdetail.di.FlightDetailModule
 import com.gustavobonilla.safebodachallenge.presentation.sections.flightresult.di.FlightResultComponent
 import com.gustavobonilla.safebodachallenge.presentation.sections.flightresult.di.FlightResultModule
 import com.gustavobonilla.safebodachallenge.presentation.sections.home.di.HomeComponent
@@ -20,6 +22,7 @@ interface SafeBodaChallengeApplicationComponent {
     fun plus(splashModule: SplashModule): SplashComponent
     fun plus(homeModule: HomeModule): HomeComponent
     fun plus(flightResultModule: FlightResultModule): FlightResultComponent
+    fun plus(flightDetailModule: FlightDetailModule): FlightDetailComponent
 }
 
 @Module

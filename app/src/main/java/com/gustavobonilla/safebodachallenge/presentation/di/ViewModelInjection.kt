@@ -3,6 +3,7 @@ package com.gustavobonilla.safebodachallenge.presentation.di
 import android.arch.lifecycle.ViewModel
 import com.gustavobonilla.safebodachallenge.domain.model.City
 import com.gustavobonilla.safebodachallenge.domain.model.FlightSchedule
+import com.gustavobonilla.safebodachallenge.presentation.viewmodel.CityViewModel
 import com.gustavobonilla.safebodachallenge.presentation.viewmodel.FlightScheduleViewModel
 import com.gustavobonilla.safebodachallenge.presentation.viewmodel.SearchCitiesViewModel
 import com.gustavobonilla.safebodachallenge.presentation.viewmodel.StoreCitiesViewModel
@@ -31,5 +32,11 @@ class ViewModelModule {
     @Singleton
     fun providesFlightScheduleViewModel(useCase: UseCase<List<FlightSchedule>, FlightSchedulesRequest>): ViewModel {
         return FlightScheduleViewModel(useCase)
+    }
+
+    @Provides
+    @Singleton
+    fun providesCityViewModel(useCase: UseCase<City, String>): ViewModel {
+        return CityViewModel(useCase)
     }
 }
