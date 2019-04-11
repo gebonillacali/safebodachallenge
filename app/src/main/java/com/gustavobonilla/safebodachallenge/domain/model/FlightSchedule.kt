@@ -9,5 +9,7 @@ data class FlightData(
         val airlineId: String,
         val departureAirport: String,
         val departureLocalTime: String,
+        val departureTerminal: String,
         val arrivalAirport: String,
-        val arrivalLocalTime: String)
+        val arrivalLocalTime: String,
+        val arrivalTerminal: String)
