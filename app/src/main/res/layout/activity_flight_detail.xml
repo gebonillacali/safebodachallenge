@@ -9,7 +9,7 @@
         android:id="@+id/cityTitle"
         android:layout_width="@dimen/zero_value"
         android:layout_height="wrap_content"
-        android:text="Flight Detail"
+        android:text="@string/flight_detail_title"
         android:textColor="@color/colorAccent"
         android:textSize="30sp"
         android:gravity="center"
