@@ -3,4 +3,11 @@
     <string name="splash_intro_text">Gustavo\'s Android Challenge</string>
     <string name="splash_explaining_text">Loading initial content, please wait…</string>
     <string name="splash_city_retrieve_error">An error occurred, please check your internet connection, close the application and try again</string>
+    <string name="flight_result_error">Seems that this journey cannot be done at the moment, please go back and try another thanks.</string>
+    <string name="flight_result_title">Flight Schedules</string>
+    <string name="default_airport_code">AIR</string>
+    <string name="instructions_airport_selection">Tap to Select</string>
+    <string name="select_airport_error">Could not find a city with this name.</string>
+    <string name="search_airport">Search Airport</string>
+    <string name="hint_select_airport">Enter a city name</string>
 </resources>

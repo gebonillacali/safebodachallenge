@@ -14,6 +14,7 @@ import com.gustavobonilla.safebodachallenge.domain.repository.SafeBodaRepository
 import com.gustavobonilla.safebodachallenge.isNotNull
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
+import java.util.concurrent.TimeUnit
 
 class SafeBodaDataRepository(private val apiService: LuftansaServiceApi,
                              private val dao: AppDatabase): SafeBodaRepository {
@@ -42,6 +43,7 @@ class SafeBodaDataRepository(private val apiService: LuftansaServiceApi,
                 .map {
                     it.map(CityEntityMapper::transformCityDaoToCityModel)
                 }.toObservable()
+                .debounce(DEBOUNCE_TIME, TimeUnit.MILLISECONDS)
     }
 
     override fun getFlightSchedule(originAirport: String, destinationAirport: String, date: String): Observable<List<FlightSchedule>> {
@@ -62,5 +64,6 @@ class SafeBodaDataRepository(private val apiService: LuftansaServiceApi,
 
     companion object {
         private val UPDATE_CITIES_DUMMY_ERROR_VALUE = CityEntity(CityResource(Cities(emptyList()), Meta("", emptyList(), 0)))
+        private const val DEBOUNCE_TIME = 2000L
     }
 }

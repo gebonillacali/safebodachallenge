@@ -1,6 +1,11 @@
 package com.gustavobonilla.safebodachallenge.presentation.base
 
 interface BaseViewModel<T, Parameters> {
+
+    fun saveInMemoryValues(key: String, value: Any)
+
+    fun retreiveInMemoryValues(key: String): Any?
+
     /**
      * Subscribes the observers when the data is requested.
      * This also performs the first request and add this to the disposables.

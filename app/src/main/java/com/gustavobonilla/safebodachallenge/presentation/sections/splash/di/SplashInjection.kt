@@ -1,9 +1,9 @@
-package com.gustavobonilla.safebodachallenge.presentation.splash.di
+package com.gustavobonilla.safebodachallenge.presentation.sections.splash.di
 
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v4.app.FragmentActivity
 import com.gustavobonilla.safebodachallenge.presentation.base.BaseViewModel
-import com.gustavobonilla.safebodachallenge.presentation.splash.view.SplashActivity
+import com.gustavobonilla.safebodachallenge.presentation.sections.splash.view.SplashActivity
 import com.gustavobonilla.safebodachallenge.presentation.viewmodel.SafeBodaViewModelFactory
 import com.gustavobonilla.safebodachallenge.presentation.viewmodel.StoreCitiesViewModel
 import dagger.Module

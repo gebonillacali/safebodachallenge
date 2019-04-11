@@ -55,14 +55,13 @@ abstract class UseCase<T, Parameters>(
             compositeDisposable.add(createUseCase(parameters)
                     .subscribeOn(subscribeOn)
                     .observeOn(observeOn)
-                    .doOnError { throwable ->
+                    .subscribe ({
+                        observer(it)
+                    },{ throwable ->
                         errorObserver?.let {
                             it(throwable)
                         }
-                    }
-                    .subscribe {
-                        observer(it)
-                    })
+                    }))
         }
     }
 
