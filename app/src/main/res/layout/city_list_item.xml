@@ -41,7 +41,7 @@
                 android:layout_marginTop="8dp"
                 android:textColor="@color/white"
                 android:textSize="35sp"
-                android:text="AIR"
+                android:text="@string/default_airport_code"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -56,7 +56,7 @@
                 android:layout_marginTop="8dp"
                 android:textColor="@color/white"
                 android:textSize="13sp"
-                android:text="Tap to Select"
+                android:text="@string/instructions_airport_selection"
 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

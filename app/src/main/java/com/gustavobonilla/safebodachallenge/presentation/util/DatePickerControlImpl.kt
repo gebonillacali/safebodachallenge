@@ -2,13 +2,12 @@ package com.gustavobonilla.safebodachallenge.presentation.util
 
 import android.app.DatePickerDialog
 import android.content.Context
-import android.widget.TextView
 import java.lang.ref.WeakReference
-import java.util.Calendar
+import java.util.*
 
 class DatePickerControlImpl(private val context: WeakReference<Context>,
                             private val calendar: Calendar = Calendar.getInstance(),
-                            private val action: (String) -> Unit) {
+                            private val action: (String) -> Unit): DatePickerControl {
 
     private val datePickerListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
         val fixedMonth = if (month + 1 < 10) "0${month+1}" else "${month+1}"
@@ -16,7 +15,7 @@ class DatePickerControlImpl(private val context: WeakReference<Context>,
         action("$year-$fixedMonth-$fixedDay")
     }
 
-    fun show() {
+    override fun show() {
         context.get()?.let { safeContext ->
             DatePickerDialog(safeContext,
                     datePickerListener,

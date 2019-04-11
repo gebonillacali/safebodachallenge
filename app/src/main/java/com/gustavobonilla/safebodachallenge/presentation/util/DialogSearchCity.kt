@@ -26,6 +26,7 @@ class DialogSearchCity(context: Context?, private val searchCity: SearchCitiesVi
 
     lateinit var adapter: ItemAdapter<City>
 
+    //region [Dialog] Impl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutResource())
@@ -33,12 +34,16 @@ class DialogSearchCity(context: Context?, private val searchCity: SearchCitiesVi
         searchCity.subscribe(subscribeListener(), subscribeErrorListener())
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
     }
+    //endregion
 
+    //region [ClickListener] Impl
     override fun onItemClickListener(item: City) {
         dismiss()
         action(item)
     }
+    //endregion
 
+    //region [BaseView]
     override fun subscribeErrorListener(): ((Throwable) -> Unit)? {
         return {
             Toast.makeText(context, it.localizedMessage, Toast.LENGTH_LONG).show()
@@ -62,7 +67,12 @@ class DialogSearchCity(context: Context?, private val searchCity: SearchCitiesVi
     override fun inject() {
         //Not required
     }
+    //endregion
 
+    //region private Impl
+    /**
+     * Set the initial values to the views in Dialog.
+     */
     private fun setViews() {
         adapter = ItemAdapter.create(this)
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -117,4 +127,5 @@ class DialogSearchCity(context: Context?, private val searchCity: SearchCitiesVi
         recyclerView.visible = !show
         errorMessage.visible = !show
     }
+    //endregion
 }
