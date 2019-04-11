@@ -2,6 +2,8 @@ package com.gustavobonilla.safebodachallenge.presentation.di
 
 import android.content.Context
 import com.gustavobonilla.safebodachallenge.presentation.SafeBodaChallengeApplication
+import com.gustavobonilla.safebodachallenge.presentation.sections.flightresult.di.FlightResultComponent
+import com.gustavobonilla.safebodachallenge.presentation.sections.flightresult.di.FlightResultModule
 import com.gustavobonilla.safebodachallenge.presentation.sections.home.di.HomeComponent
 import com.gustavobonilla.safebodachallenge.presentation.sections.home.di.HomeModule
 import com.gustavobonilla.safebodachallenge.presentation.sections.splash.di.SplashComponent
@@ -17,6 +19,7 @@ import javax.inject.Singleton
 interface SafeBodaChallengeApplicationComponent {
     fun plus(splashModule: SplashModule): SplashComponent
     fun plus(homeModule: HomeModule): HomeComponent
+    fun plus(flightResultModule: FlightResultModule): FlightResultComponent
 }
 
 @Module
