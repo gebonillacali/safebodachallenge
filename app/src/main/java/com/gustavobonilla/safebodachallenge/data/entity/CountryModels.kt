@@ -1,6 +1,10 @@
 package com.gustavobonilla.safebodachallenge.data.entity
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Defines the model for Country Data Entities.
+ */
+
 data class CountryResponse(
     @SerializedName("CountryResource")
     val countryResource: CountryResource

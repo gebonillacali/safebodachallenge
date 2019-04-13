@@ -6,7 +6,6 @@ import android.widget.TextView
 import android.widget.Toast
 import com.gustavobonilla.safebodachallenge.R
 import com.gustavobonilla.safebodachallenge.domain.model.City
-import com.gustavobonilla.safebodachallenge.isNotNull
 import com.gustavobonilla.safebodachallenge.presentation.SafeBodaChallengeApplication
 import com.gustavobonilla.safebodachallenge.presentation.base.BaseFragment
 import com.gustavobonilla.safebodachallenge.presentation.navigation.Navigation
@@ -66,8 +65,8 @@ class HomeFragment : BaseFragment<@JvmSuppressWildcards List<City>, String>() {
     }
 
     private fun setAirportInitialValues(airportView: View, keyForAirport: String, keyForCityName: String) {
-        val airportCode = viewModel.retreiveInMemoryValues<String>(keyForAirport) ?: ""
-        val cityName = viewModel.retreiveInMemoryValues<String>(keyForCityName) ?: ""
+        val airportCode = viewModel.retrieveInMemoryValues<String>(keyForAirport) ?: ""
+        val cityName = viewModel.retrieveInMemoryValues<String>(keyForCityName) ?: ""
         if (airportCode.isNotEmpty() && cityName.isNotEmpty()) {
             setAirportValues(airportView, airportCode, cityName)
         }
@@ -130,7 +129,7 @@ class HomeFragment : BaseFragment<@JvmSuppressWildcards List<City>, String>() {
     }
 
     private fun setDateInControl() {
-        val date = viewModel.retreiveInMemoryValues<String>("flightDate") ?: ""
+        val date = viewModel.retrieveInMemoryValues<String>("flightDate") ?: ""
         val dateValue = if (date.isNotEmpty())
             date
         else

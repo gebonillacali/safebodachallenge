@@ -33,6 +33,7 @@ class FlightResultFragment : BaseListItemFragment<FlightSchedule, FlightSchedule
     }
     //endregion
 
+    //region [ClickListener] Impl
     override fun onItemClickListener(item: FlightSchedule) {
         val flightSchedule = Gson().toJson(item)
         activity?.let {
@@ -42,6 +43,9 @@ class FlightResultFragment : BaseListItemFragment<FlightSchedule, FlightSchedule
         }
 
     }
+    //endregion
+
+    //region [BaseView] Impl
     override fun inject() {
         activity?.let {
             (it.application as SafeBodaChallengeApplication)

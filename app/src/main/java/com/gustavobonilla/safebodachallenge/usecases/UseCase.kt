@@ -65,12 +65,18 @@ abstract class UseCase<T, Parameters>(
         }
     }
 
+    /**
+     * Disposes the [Disposable] objects that are being used on requests.
+     */
     fun dispose() {
         if (!compositeDisposable.isDisposed) {
             compositeDisposable.dispose()
         }
     }
 
+    /**
+     * Clears the [Disposable] objects that are being used on requests.
+     */
     fun clear() {
         compositeDisposable.clear()
     }

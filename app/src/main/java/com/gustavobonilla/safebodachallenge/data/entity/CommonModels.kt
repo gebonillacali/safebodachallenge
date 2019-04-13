@@ -2,6 +2,10 @@ package com.gustavobonilla.safebodachallenge.data.entity
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Defines the common models for Data Entities.
+ */
+
 data class Meta(
         @SerializedName("@Version")
         val version: String,

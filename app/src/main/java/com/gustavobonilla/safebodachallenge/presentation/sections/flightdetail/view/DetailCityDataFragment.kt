@@ -12,13 +12,15 @@ class DetailCityDataFragment: BaseFragment<City, String>() {
 
     lateinit var city: City
 
+    //region [Fragment] LifeCycle impl
     override fun onResume() {
         super.onResume()
-        val currentCity = viewModel.retreiveInMemoryValues<City>("currentCity")
+        val currentCity = viewModel.retrieveInMemoryValues<City>("currentCity")
         currentCity?.let {
             fillInfo(city)
         }
     }
+    //endregion
 
     //region [BaseView] Impl
     override fun subscribeErrorListener(): ((Throwable) -> Unit)? {
@@ -49,6 +51,11 @@ class DetailCityDataFragment: BaseFragment<City, String>() {
     //endregion
 
     //region private impl
+    /**
+     * Fill the clicked [City] info in detail view.
+     *
+     * @param city the object that has the info to be filled.
+     */
     private fun fillInfo(city: City) {
         if (city.airportCode.isNotEmpty() && city.cityName.isNotEmpty()) {
             viewModel.saveInMemoryValues("currentCity", city)

@@ -8,6 +8,9 @@ import com.gustavobonilla.safebodachallenge.presentation.adapter.ClickListener
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * The [RecyclerView.ViewHolder] for the [FlightSchedule] model.
+ */
 class FlightScheduleViewHolder(view: View): BaseViewHolder<FlightSchedule>(view) {
 
     private val originAirport  = view.findViewById<TextView>(R.id.originAirport)
@@ -19,6 +22,7 @@ class FlightScheduleViewHolder(view: View): BaseViewHolder<FlightSchedule>(view)
     private val arrivalTime = view.findViewById<TextView>(R.id.arrivalTime)
     private val arrivalDate = view.findViewById<TextView>(R.id.arrivalDate)
     private val flightInfo = view.findViewById<TextView>(R.id.flightInfo)
+
     override fun bindItem(item: FlightSchedule, clickListener: ClickListener<FlightSchedule>) {
         val firstFlight = item.flights.first()
         val lastFlight = item.flights.last()
@@ -40,6 +44,13 @@ class FlightScheduleViewHolder(view: View): BaseViewHolder<FlightSchedule>(view)
         }
     }
 
+    /**
+     * Gets the day formatted, Ex. tue. 10 may 2019.
+     *
+     * @param fullDate the date of a [FlightSchedule].
+     *
+     * @return the date formatted. Ex. tue. 10 may 2019.
+     */
     private fun getDay(fullDate: String): String {
         val dateParse = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(fullDate.split("T")[0])
         return SimpleDateFormat("EE. dd MMM yyyy", Locale.ENGLISH).format(dateParse).toLowerCase()

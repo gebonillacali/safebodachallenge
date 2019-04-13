@@ -8,6 +8,9 @@ import com.gustavobonilla.safebodachallenge.data.entity.Schedule
 import com.gustavobonilla.safebodachallenge.data.entity.TotalJourney
 import java.lang.reflect.Type
 
+/**
+ * Helps to tell [Retrofit] and [Gson] how to deserialize the json response for [Schedule] object.
+ */
 class ScheduleTypeAdapter : JsonDeserializer<Schedule> {
     override fun deserialize(scheduleElement: JsonElement, typeOfT: Type, context: JsonDeserializationContext): Schedule {
         val jsonObject = scheduleElement.asJsonObject
