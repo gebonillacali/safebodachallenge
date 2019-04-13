@@ -14,4 +14,17 @@ class FlightScheduleAdapterItem(private val item: FlightSchedule, private val cl
     }
 
     override fun getSection(): String = ""
+
+    override fun equals(other: Any?): Boolean {
+        return other is FlightScheduleAdapterItem && item.flights == other.item.flights
+    }
+
+    override fun hashCode(): Int {
+        return super.hashCode() +
+                item.totalDuration.hashCode() +
+                item.flights.last().airlineId.hashCode() +
+                item.flights.first().airlineId.hashCode() +
+                item.flights.first().arrivalLocalTime.hashCode() +
+                item.flights.last().arrivalLocalTime.hashCode();
+    }
 }
