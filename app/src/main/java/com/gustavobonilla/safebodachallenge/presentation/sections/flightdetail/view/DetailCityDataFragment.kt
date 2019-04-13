@@ -2,7 +2,6 @@ package com.gustavobonilla.safebodachallenge.presentation.sections.flightdetail.
 
 import com.gustavobonilla.safebodachallenge.R
 import com.gustavobonilla.safebodachallenge.domain.model.City
-import com.gustavobonilla.safebodachallenge.isNotNull
 import com.gustavobonilla.safebodachallenge.presentation.SafeBodaChallengeApplication
 import com.gustavobonilla.safebodachallenge.presentation.base.BaseFragment
 import com.gustavobonilla.safebodachallenge.presentation.sections.flightdetail.di.FlightDetailModule
@@ -15,8 +14,8 @@ class DetailCityDataFragment: BaseFragment<City, String>() {
 
     override fun onResume() {
         super.onResume()
-        val currentCity = viewModel.retreiveInMemoryValues("currentCity")
-        if (currentCity.isNotNull() && currentCity is City) {
+        val currentCity = viewModel.retreiveInMemoryValues<City>("currentCity")
+        currentCity?.let {
             fillInfo(city)
         }
     }

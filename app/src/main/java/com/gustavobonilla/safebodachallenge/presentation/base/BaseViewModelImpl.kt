@@ -36,8 +36,13 @@ abstract class BaseViewModelImpl<T, Parameters>(private val useCase: UseCase<T, 
         memoryValues[key] = value
     }
 
-    override fun retreiveInMemoryValues(key: String): Any? {
-        return if (memoryValues.contains(key)) memoryValues[key] else null
+    @Suppress(UNCHECKED_CAST_SUPPRESS)
+    override fun <T> retreiveInMemoryValues(key: String): T? {
+        return if (memoryValues.contains(key)) memoryValues[key] as T else null
     }
     //endregion
+
+    companion object {
+        const val UNCHECKED_CAST_SUPPRESS = "UNCHECKED_CAST"
+    }
 }

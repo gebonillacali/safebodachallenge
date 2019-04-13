@@ -4,7 +4,7 @@ interface BaseViewModel<T, Parameters> {
 
     fun saveInMemoryValues(key: String, value: Any)
 
-    fun retreiveInMemoryValues(key: String): Any?
+    fun <T> retreiveInMemoryValues(key: String): T?
 
     /**
      * Subscribes the observers when the data is requested.

@@ -66,12 +66,9 @@ class HomeFragment : BaseFragment<@JvmSuppressWildcards List<City>, String>() {
     }
 
     private fun setAirportInitialValues(airportView: View, keyForAirport: String, keyForCityName: String) {
-        val airportCode = viewModel.retreiveInMemoryValues(keyForAirport)
-        val cityName = viewModel.retreiveInMemoryValues(keyForCityName)
-        if (airportCode.isNotNull() &&
-                airportCode is String &&
-                cityName.isNotNull() &&
-                cityName is String) {
+        val airportCode = viewModel.retreiveInMemoryValues<String>(keyForAirport) ?: ""
+        val cityName = viewModel.retreiveInMemoryValues<String>(keyForCityName) ?: ""
+        if (airportCode.isNotEmpty() && cityName.isNotEmpty()) {
             setAirportValues(airportView, airportCode, cityName)
         }
     }
@@ -133,8 +130,8 @@ class HomeFragment : BaseFragment<@JvmSuppressWildcards List<City>, String>() {
     }
 
     private fun setDateInControl() {
-        val date = viewModel.retreiveInMemoryValues("flightDate")
-        val dateValue = if (date.isNotNull() && date is String)
+        val date = viewModel.retreiveInMemoryValues<String>("flightDate") ?: ""
+        val dateValue = if (date.isNotEmpty())
             date
         else
             SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(Calendar.getInstance().time)

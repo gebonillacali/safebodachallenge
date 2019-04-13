@@ -32,7 +32,8 @@ class FlightScheduleViewHolder(view: View): BaseViewHolder<FlightSchedule>(view)
         arrivalTime.text = lastFlight.arrivalLocalTime.split("T")[1]
         arrivalDate.text = getDay(lastFlight.arrivalLocalTime)
 
-        flightInfo.text = "${item.flights.size - 1} Stops | #Flight ${item.flights[0].flightNumber} | ${item.totalDuration.substring(2)}"
+        val formattedDuration = item.totalDuration.replace("P","").replace("T", "")
+        flightInfo.text = "${item.flights.size - 1} Stops | #Flight ${item.flights[0].flightNumber} | $formattedDuration"
 
         itemView.setOnClickListener {
             clickListener.onItemClickListener(item)
