@@ -6,6 +6,9 @@ import com.gustavobonilla.safebodachallenge.R
 import com.gustavobonilla.safebodachallenge.domain.model.City
 import com.gustavobonilla.safebodachallenge.presentation.adapter.ClickListener
 
+/**
+ * The [RecyclerView.ViewHolder] for the [City] model.
+ */
 class CityViewHolder(private val view: View): BaseViewHolder<City>(view) {
     private val cityName = view.findViewById<TextView>(R.id.cityName)
     private val airportCode = view.findViewById<TextView>(R.id.airportCode)

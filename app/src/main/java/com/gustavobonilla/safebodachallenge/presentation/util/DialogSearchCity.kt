@@ -43,7 +43,7 @@ class DialogSearchCity(context: Context?, private val searchCity: SearchCitiesVi
     }
     //endregion
 
-    //region [BaseView]
+    //region [BaseView] impl
     override fun subscribeErrorListener(): ((Throwable) -> Unit)? {
         return {
             Toast.makeText(context, it.localizedMessage, Toast.LENGTH_LONG).show()

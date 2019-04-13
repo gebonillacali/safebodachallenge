@@ -5,8 +5,7 @@ interface ClickListener<T> {
   /**
    * Defines the click listener for items.
    *
-   * @param item the info for the item
-   * @param code the code for the item.
+   * @param item the info for the item.
    */
   fun onItemClickListener(item: T)
 }

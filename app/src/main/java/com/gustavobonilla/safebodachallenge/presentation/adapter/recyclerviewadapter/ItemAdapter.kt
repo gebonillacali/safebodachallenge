@@ -5,6 +5,9 @@ import com.gustavobonilla.safebodachallenge.presentation.adapter.ClickListener
 
 abstract class ItemAdapter<T>:  RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    /**
+     * Represents the kind of [RecyclerView.Adapter] notifying when the data changes.
+     */
     enum class AdapterNotification {
         ALL_DATA,
         RANGE_INSERTED
@@ -17,6 +20,9 @@ abstract class ItemAdapter<T>:  RecyclerView.Adapter<RecyclerView.ViewHolder>() 
      */
     abstract fun addItems(items: List<T>, adapterNotification: AdapterNotification)
 
+    /**
+     * Clears all items in the list of adapter.
+     */
     abstract fun clear()
 
     companion object {

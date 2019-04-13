@@ -14,7 +14,7 @@ import com.gustavobonilla.safebodachallenge.data.room.AppDatabase.Companion.VERS
 abstract class AppDatabase: RoomDatabase() {
 
     /**
-     * Get the [City] Dao.
+     * Get the [CityDaoEntity] Dao.
      */
     abstract fun getCities(): CitiesDao
 

@@ -2,9 +2,23 @@ package com.gustavobonilla.safebodachallenge.presentation.base
 
 interface BaseViewModel<T, Parameters> {
 
+    /**
+     * Saves data in the [ViewModel] for later use or to be stored while the app is alive.
+     * To be used for example (Configuration change - Screen rotation.)
+     *
+     * @param key the name of the value that will be stored.
+     * @param value the value itself to be stored.
+     */
     fun saveInMemoryValues(key: String, value: Any)
 
-    fun <T> retreiveInMemoryValues(key: String): T?
+    /**
+     * Retrieves the value stored in [ViewModel].
+     *
+     * @param key the key associated to the value stored.
+     *
+     * @return the value associated with the key provided or null if not found.
+     */
+    fun <T> retrieveInMemoryValues(key: String): T?
 
     /**
      * Subscribes the observers when the data is requested.

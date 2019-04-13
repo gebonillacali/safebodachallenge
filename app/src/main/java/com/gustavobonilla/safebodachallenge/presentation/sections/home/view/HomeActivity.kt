@@ -8,6 +8,7 @@ import com.gustavobonilla.safebodachallenge.presentation.navigation.Navigation
 
 class HomeActivity : AppCompatActivity() {
 
+    //region [Activity] Lifecycle impl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -15,8 +16,11 @@ class HomeActivity : AppCompatActivity() {
             initHomeFragment()
         }
     }
+    //endregion
 
+    //region private impl
     private fun initHomeFragment() {
         Navigation.addFragment(supportFragmentManager, R.id.homeFragmentContainer, HomeFragment.newInstance())
     }
+    //endregion
 }

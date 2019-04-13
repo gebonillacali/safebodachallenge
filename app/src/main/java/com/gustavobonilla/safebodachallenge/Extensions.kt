@@ -126,5 +126,12 @@ inline fun supportsMarshmallow(code: () -> Unit) {
     }
 }
 
+/**
+ * Allows to parse a json [String] letting know the class that will be parsing.
+ *
+ * @param json that represents the data to be parsed.
+ *
+ * @return the instance of an object that is parsed by [Gson]
+ */
 inline fun <T> Gson.fromJson(json: String) = this.fromJson<T>(json, object: TypeToken<T>() {}.type)
 

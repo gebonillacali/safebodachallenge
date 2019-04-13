@@ -23,7 +23,7 @@ class FlightDetailFragment : SupportMapFragment(), OnMapReadyCallback, BaseView<
     lateinit var cityViewModel: BaseViewModel<City, String>
 
     private lateinit var flightSchedule: String
-    private lateinit var polygonHandler: PolylineHandler
+    private lateinit var polylineHandler: PolylineHandler
 
     //region Fragment Lifecycle
     override fun onAttach(context: Context?) {
@@ -46,21 +46,21 @@ class FlightDetailFragment : SupportMapFragment(), OnMapReadyCallback, BaseView<
 
     override fun onResume() {
         super.onResume()
-        val currentCity = cityViewModel.retreiveInMemoryValues<City>("currentCity")
+        val currentCity = cityViewModel.retrieveInMemoryValues<City>("currentCity")
         currentCity?.let {
             if (cityViewModel is CityViewModel) {
                 (cityViewModel as CityViewModel).notifyTappedCity(currentCity)
             }
         }
 
-        if (this::polygonHandler.isInitialized) {
-            subscribeToPolygonHandler()
+        if (this::polylineHandler.isInitialized) {
+            subscribeToPolylineHandler()
         }
     }
 
     override fun onDetach() {
         cityViewModel.unSubscribe()
-        polygonHandler.unSubscribe()
+        polylineHandler.unSubscribe()
         super.onDetach()
     }
     //endregion
@@ -80,9 +80,9 @@ class FlightDetailFragment : SupportMapFragment(), OnMapReadyCallback, BaseView<
     override fun subscribeListener(): (City) -> Unit {
         return {
             if ((cityViewModel as CityViewModel).finishRequesting) {
-                polygonHandler.createPolyline()
+                polylineHandler.createPolyline()
             } else {
-                polygonHandler.addCity(it)
+                polylineHandler.addCity(it)
             }
         }
     }
@@ -102,18 +102,26 @@ class FlightDetailFragment : SupportMapFragment(), OnMapReadyCallback, BaseView<
     //endregion
 
     //region private impl
+    /**
+     * Setups the map and creates the [PolylineHandler] and performs subscriptions to it.
+     *
+     * @param googleMap the map in which the [PolylineHandler] will render.
+     */
     private fun setupMapAndPolygon(googleMap: GoogleMap) {
         val iconCity = activity?.bitmapDescriptorFromVector(R.drawable.plane)
         iconCity?.let {
-            if (!this::polygonHandler.isInitialized) {
-                polygonHandler = PolylineHandler.create(googleMap, it)
+            if (!this::polylineHandler.isInitialized) {
+                polylineHandler = PolylineHandler.create(googleMap, it)
             }
-            subscribeToPolygonHandler()
+            subscribeToPolylineHandler()
         }
     }
 
-    private fun subscribeToPolygonHandler() {
-        polygonHandler.subscribeToPublisher {
+    /**
+     * Performs the subscription to the [PolylineHandler].
+     */
+    private fun subscribeToPolylineHandler() {
+        polylineHandler.subscribeToPublisher {
             if (cityViewModel is CityViewModel) {
                 (cityViewModel as CityViewModel).notifyTappedCity(it)
             }

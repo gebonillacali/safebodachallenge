@@ -37,7 +37,7 @@ abstract class BaseViewModelImpl<T, Parameters>(private val useCase: UseCase<T, 
     }
 
     @Suppress(UNCHECKED_CAST_SUPPRESS)
-    override fun <T> retreiveInMemoryValues(key: String): T? {
+    override fun <T> retrieveInMemoryValues(key: String): T? {
         return if (memoryValues.contains(key)) memoryValues[key] as T else null
     }
     //endregion

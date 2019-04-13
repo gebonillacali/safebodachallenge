@@ -16,6 +16,9 @@ import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
 
+/**
+ * Implementation for [SafeBodaRepository] in which obtains the info from API and Local DB.
+ */
 class SafeBodaDataRepository(private val apiService: LuftansaServiceApi,
                              private val dao: AppDatabase): SafeBodaRepository {
 

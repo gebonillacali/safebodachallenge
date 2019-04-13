@@ -1,5 +1,8 @@
 package com.gustavobonilla.safebodachallenge.domain.model
 
+/**
+ * Represents a [City] in the app.
+ */
 data class City(val cityCode: String,
                 val countryCode: String,
                 val cityName: String,

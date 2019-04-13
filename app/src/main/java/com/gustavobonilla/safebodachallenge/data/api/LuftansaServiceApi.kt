@@ -2,6 +2,9 @@ package com.gustavobonilla.safebodachallenge.data.api
 
 import io.reactivex.disposables.Disposable
 
+/**
+ * Definition for the service api.
+ */
 interface LuftansaServiceApi {
     val api: LuftansaApi
 

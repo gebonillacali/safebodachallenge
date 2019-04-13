@@ -7,6 +7,9 @@ import com.gustavobonilla.safebodachallenge.data.entity.Airports
 import com.gustavobonilla.safebodachallenge.isNotNull
 import java.lang.reflect.Type
 
+/**
+ * Helps to tell [Retrofit] and [Gson] how to deserialize the json response for [Airports] object.
+ */
 class AirportTypeAdapter: JsonDeserializer<Airports> {
     override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): Airports {
         val jsonObject = json.asJsonObject

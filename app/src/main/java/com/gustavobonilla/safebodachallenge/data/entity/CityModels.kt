@@ -6,6 +6,10 @@ import com.google.gson.annotations.SerializedName
 import com.gustavobonilla.safebodachallenge.domain.model.City as CityModel
 import com.gustavobonilla.safebodachallenge.domain.model.Coordinate as CoordinateModel
 
+/**
+ * Defines the model for City Data Entities.
+ */
+
 //region Dao Entities
 @Entity(tableName = "cities")
 data class CityDaoEntity(
