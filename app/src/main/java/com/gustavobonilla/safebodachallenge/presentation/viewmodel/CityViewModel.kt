@@ -10,6 +10,7 @@ import javax.inject.Inject
 class CityViewModel @Inject constructor(private val useCase: UseCase<City, String>): BaseViewModelImpl<City, String>(useCase) {
 
     lateinit var flightSchedule: FlightSchedule
+    lateinit var lastSourceFlightSchedule: String
     var finishRequesting = false
 
     fun notifyTappedCity(city: City) {
@@ -17,7 +18,8 @@ class CityViewModel @Inject constructor(private val useCase: UseCase<City, Strin
     }
 
     override fun getData(parameters: String) {
-        if (!this::flightSchedule.isInitialized) {
+        if (shouldPerformParsing(parameters)) {
+            lastSourceFlightSchedule = parameters
             flightSchedule = Gson().fromJson(parameters, FlightSchedule::class.java)
         }
         val airports = mutableListOf<String>()
@@ -26,6 +28,9 @@ class CityViewModel @Inject constructor(private val useCase: UseCase<City, Strin
 
         obtainCities(airports)
     }
+
+    private fun shouldPerformParsing(parameters: String) =
+            !this::flightSchedule.isInitialized || (this::lastSourceFlightSchedule.isInitialized && lastSourceFlightSchedule != parameters)
 
     private fun obtainCities(list: List<String>) {
         if (list.isNotEmpty()) {

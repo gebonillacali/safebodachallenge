@@ -9,7 +9,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.gustavobonilla.safebodachallenge.R
 import com.gustavobonilla.safebodachallenge.bitmapDescriptorFromVector
 import com.gustavobonilla.safebodachallenge.domain.model.City
-import com.gustavobonilla.safebodachallenge.isNotNull
 import com.gustavobonilla.safebodachallenge.presentation.SafeBodaChallengeApplication
 import com.gustavobonilla.safebodachallenge.presentation.base.BaseView
 import com.gustavobonilla.safebodachallenge.presentation.base.BaseViewModel
@@ -47,12 +46,13 @@ class FlightDetailFragment : SupportMapFragment(), OnMapReadyCallback, BaseView<
 
     override fun onResume() {
         super.onResume()
-        val currentCity = cityViewModel.retreiveInMemoryValues("currentCity")
-        if (currentCity.isNotNull() && currentCity is City) {
+        val currentCity = cityViewModel.retreiveInMemoryValues<City>("currentCity")
+        currentCity?.let {
             if (cityViewModel is CityViewModel) {
                 (cityViewModel as CityViewModel).notifyTappedCity(currentCity)
             }
         }
+
         if (this::polygonHandler.isInitialized) {
             subscribeToPolygonHandler()
         }
