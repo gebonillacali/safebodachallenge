@@ -22,6 +22,7 @@ abstract class UseCase<T, Parameters>(
 
     private val compositeDisposable = CompositeDisposable()
 
+    abstract val requiresAuthToken: Boolean
     abstract val repository: SafeBodaRepository
 
     /**
@@ -30,7 +31,11 @@ abstract class UseCase<T, Parameters>(
      * @param action function that will be executed once the operation of retrieving an auth token is performed.
      */
     private fun checkAuthToken(action: (Boolean, Disposable?) -> Unit) {
-        repository.checkAuthtoken(action)
+        if (requiresAuthToken) {
+            repository.checkAuthtoken(action)
+        } else {
+            action(false, null)
+        }
     }
 
     /**
