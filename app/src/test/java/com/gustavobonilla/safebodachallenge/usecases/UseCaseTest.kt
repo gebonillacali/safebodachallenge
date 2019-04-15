@@ -48,6 +48,7 @@ class UseCaseTest {
 }
 
 class DummyUseCase: UseCase<String, String>(Schedulers.trampoline(), Schedulers.trampoline()) {
+    override val requiresAuthToken: Boolean = false
     override val repository: SafeBodaRepository = SafeBodaRepositoryDummy()
     override fun createUseCase(parameters: String): Observable<String> = Observable.just("")
 }

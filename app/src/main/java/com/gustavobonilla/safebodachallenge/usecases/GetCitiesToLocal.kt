@@ -7,6 +7,9 @@ import io.reactivex.Observable
  * Gets the cities from the API and store them into the local db persistence.
  */
 class GetCitiesToLocal(override val repository: SafeBodaRepository): UseCase<Int, Int>() {
+
+    override val requiresAuthToken: Boolean = true
+
     override fun createUseCase(parameters: Int): Observable<Int> {
         return repository.updateCities(parameters)
     }
